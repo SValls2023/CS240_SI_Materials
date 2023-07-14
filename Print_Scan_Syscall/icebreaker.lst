@@ -1,0 +1,83 @@
+     1                                 %line 1+1 icebreaker.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 
+     6                                 
+     7                                 [section .data]
+     8 00000000 48656C6C6F2C206D79-     greeting db "Hello, my name is Samuel Valls!", 10
+     9 00000000 206E616D6520697320-
+    10 00000000 53616D75656C205661-
+    11 00000000 6C6C73210A         
+    12 00000020 4920616D2061204353-     major db "I am a CS Major interested in game develoment.", 10
+    13 00000020 204D616A6F7220696E-
+    14 00000020 746572657374656420-
+    15 00000020 696E2067616D652064-
+    16 00000020 6576656C6F6D656E74-
+    17 00000020 2E0A               
+    18 0000004F 4D7920686F62626965-     hobby db "My hobbies are drawing and playing competitive Smash!", 10
+    19 0000004F 732061726520647261-
+    20 0000004F 77696E6720616E6420-
+    21 0000004F 706C6179696E672063-
+    22 0000004F 6F6D70657469746976-
+    23 0000004F 6520536D617368210A 
+    24 00000085 57686174206973206D-     prompt db "What is my favorite color? "
+    25 00000085 79206661766F726974-
+    26 00000085 6520636F6C6F723F20 
+    27 000000A0 52696768742C206D79-     answer db "Right, my favorite color is "
+    28 000000A0 206661766F72697465-
+    29 000000A0 20636F6C6F72206973-
+    30 000000A0 20                 
+    31                                 
+    32                                 [section .bss]
+    33 00000000 <gap>                   color resb 12
+    34                                 
+    35                                 [section .text]
+    36                                 [global _start]
+    37                                 
+    38                                 _start:
+    39 00000000 48C7C001000000          mov rax, 1
+    40 00000007 48C7C701000000          mov rdi, 1
+    41 0000000E 48C7C6[00000000]        mov rsi, greeting
+    42 00000015 48C7C220000000          mov rdx, 32
+    43 0000001C 0F05                    syscall
+    44                                 
+    45 0000001E 48C7C001000000          mov rax, 1
+    46 00000025 48C7C701000000          mov rdi, 1
+    47 0000002C 48C7C6[00000000]        mov rsi, major
+    48 00000033 48C7C22F000000          mov rdx, 47
+    49 0000003A 0F05                    syscall
+    50                                 
+    51 0000003C 48C7C001000000          mov rax, 1
+    52 00000043 48C7C701000000          mov rdi, 1
+    53 0000004A 48C7C6[00000000]        mov rsi, hobby
+    54 00000051 48C7C236000000          mov rdx, 54
+    55 00000058 0F05                    syscall
+    56                                 
+    57 0000005A 48C7C001000000          mov rax, 1
+    58 00000061 48C7C701000000          mov rdi, 1
+    59 00000068 48C7C6[00000000]        mov rsi, prompt
+    60 0000006F 48C7C21B000000          mov rdx, 27
+    61 00000076 0F05                    syscall
+    62                                 
+    63 00000078 48C7C000000000          mov rax, 0
+    64 0000007F 48C7C700000000          mov rdi, 0
+    65 00000086 48C7C6[00000000]        mov rsi, color
+    66 0000008D 48C7C20C000000          mov rdx, 12
+    67 00000094 0F05                    syscall
+    68                                 
+    69 00000096 48C7C001000000          mov rax, 1
+    70 0000009D 48C7C701000000          mov rdi, 1
+    71 000000A4 48C7C6[00000000]        mov rsi, answer
+    72 000000AB 48C7C21C000000          mov rdx, 28
+    73 000000B2 0F05                    syscall
+    74                                 
+    75 000000B4 48C7C001000000          mov rax, 1
+    76 000000BB 48C7C701000000          mov rdi, 1
+    77 000000C2 48C7C6[00000000]        mov rsi, color
+    78 000000C9 48C7C20C000000          mov rdx, 12
+    79 000000D0 0F05                    syscall
+    80                                 
+    81 000000D2 48C7C03C000000          mov rax, 60
+    82 000000D9 48C7C700000000          mov rdi, 0
+    83 000000E0 0F05                    syscall
